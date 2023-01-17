@@ -18,6 +18,8 @@ jobs:
     runs-on: self-hosted
 
     steps:
+    - name: Free resources
+      run: sudo /etc/init.d/mysql stop
     - name: Set up JDK 17
       uses: actions/setup-java@main
       with:
@@ -26,5 +28,7 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml -DskipTests
+    - name: Run mysql
+      run: sudo /etc/init.d/mysql start
     - name: Execute Jar file
       run: lsof -i :8080 & sudo java -jar /home/ubuntu/api/_work/SpringBoot3SecurityJWT/SpringBoot3SecurityJWT/target/security-0.0.1-SNAPSHOT.jar &
