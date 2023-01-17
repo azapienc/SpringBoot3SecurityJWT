@@ -23,3 +23,6 @@ spring:
         dialect: org.hibernate.dialect.MySQL8Dialect
     database: mysql
     # database-platform: org.hibernate.dialect.MySQL8Dialect
+logging:
+  file:
+    name: my.log
