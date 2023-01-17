@@ -9,6 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -30,11 +31,16 @@ public class User implements UserDetails {
   @Id
   @GeneratedValue(strategy = AUTO)
   private Integer id;
+  @Column(nullable = false)
   private String firstname;
+  @Column(nullable = false)
   private String lastname;
+  @Column(nullable = false, unique = true)
   private String email;
+  @Column(nullable = false)
   private String password;
   @Enumerated(EnumType.STRING)
+  @Column(nullable = false)
   private Role role;
 
   @Override

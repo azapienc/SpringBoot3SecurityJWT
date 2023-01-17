@@ -36,7 +36,6 @@ public class AuthenticationService {
   }
 
   public AuthenticationResponse authenticate(AuthenticationRequest request) {
-    System.out.println("entering service");
     System.out.println(request.getPassword());
     authenticationManager.authenticate(
         new UsernamePasswordAuthenticationToken(
@@ -48,5 +47,4 @@ public class AuthenticationService {
     var jwtToken = jwtService.generateToken(user);
     return AuthenticationResponse.builder().token(jwtToken).build();
   }
-
 }
