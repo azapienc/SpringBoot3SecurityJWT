@@ -27,4 +27,4 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml -DskipTests
     - name: Execute Jar file
-      run: sudo kill -9 `sudo lsof -t -i:8080` & sudo java -jar /home/ubuntu/api/_work/SpringBoot3SecurityJWT/SpringBoot3SecurityJWT/target/security-0.0.1-SNAPSHOT.jar &
+      run: lsof -i :8080 & sudo java -jar /home/ubuntu/api/_work/SpringBoot3SecurityJWT/SpringBoot3SecurityJWT/target/security-0.0.1-SNAPSHOT.jar &
