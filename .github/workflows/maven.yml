@@ -19,7 +19,7 @@ jobs:
 
     steps:
     - name: Free resources
-      run: sudo /etc/init.d/mysql stop
+      run: sudo kill -9 $(sudo lsof -t -i:8080) & sudo /etc/init.d/mysql stop
     - name: Set up JDK 17
       uses: actions/setup-java@main
       with:
@@ -31,4 +31,4 @@ jobs:
     - name: Run mysql
       run: sudo /etc/init.d/mysql start
     - name: Execute Jar file
-      run: lsof -i :8080 & sudo java -jar /home/ubuntu/api/_work/SpringBoot3SecurityJWT/SpringBoot3SecurityJWT/target/security-0.0.1-SNAPSHOT.jar &
+      run: sudo kill -9 $(sudo lsof -t -i:8080) & sudo java -jar /home/ubuntu/api/_work/SpringBoot3SecurityJWT/SpringBoot3SecurityJWT/target/security-0.0.1-SNAPSHOT.jar &
