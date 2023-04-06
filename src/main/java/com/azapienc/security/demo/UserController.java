@@ -22,7 +22,6 @@ public class UserController {
 
   @GetMapping("/all-users")
   public ResponseEntity<List<UserBasicResponse>> getAll() {
-    log.info("Getting all users");
     return ResponseEntity.ok(userService.getAll());
   }
 }
